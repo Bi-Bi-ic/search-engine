@@ -1,0 +1,41 @@
+version: '3.6'
+
+services:
+
+  api:
+    container_name: search_app
+    build: .
+    depends_on:
+      - postgres
+    networks:
+      - search_engine
+    ports:
+      - 8080:8080
+    volumes:
+      - api:/search-engine/app
+    restart: always
+
+  postgres:
+    image: postgres:latest
+    container_name: search_db
+    environment:
+      - POSTGRES_DB=${DATABASE}      
+      - POSTGRES_USER=${USER}  
+      - POSTGRES_PASSWORD=${PASSWORD}
+      - DATABASE_HOST=${HOST}
+      - PGDATA:/var/lib/postgresql/data
+    networks:
+      - search_engine
+    ports:
+      - "5455:5455"
+    command: -p 5455
+    restart: always
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  api:
+  postgres-data:
+
+networks:
+  search_engine:

@@ -1,0 +1,15 @@
+Pillow
+pathlib
+tensorflow>=2.0.0
+Flask
+Flask-HTTPAuth
+Flask-RESTful
+Jinja2
+MarkupSafe
+Werkzeug
+itsdangerous
+six
+python-dotenv
+psycopg2
+marshmallow
+bcrypt

@@ -1,0 +1,1 @@
+SELECT * from images ORDER BY created_at DESC;
